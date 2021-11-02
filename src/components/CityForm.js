@@ -19,7 +19,6 @@ export default class CityForm extends Component {
   <Button variant="primary" onClick={this.props.getLocation}>
     Explore!
   </Button>  
-  <h2>{this.props.locationName}</h2>
 </Form>
 </Container>
     );

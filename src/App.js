@@ -22,7 +22,7 @@ handleClick = async () => {
   const url = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_KEY}&q=${this.state.locationName}&format=json`;
 
   let response = await axios.get(url);
-  console.log(response.data);
+  console.log(response.data[0]);
 }
 
   render() {

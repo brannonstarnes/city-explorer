@@ -14,7 +14,8 @@ export default class App extends Component {
     locationName: '',
     lat: '',
     lon: '',
-    mapUrl: ''
+    mapUrl: '',
+    error: false
   }
 }
 

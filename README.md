@@ -22,3 +22,5 @@ This application will allow users to serach for location details by city name us
 
 ## Credit and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
+Images:
+-https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.seekpng.com%2Fipng%2Fu2q8i1e6y3q8w7y3_lost-map-with-question-mark%2F&psig=AOvVaw39ttUGL3mpZZ45E3_1421S&ust=1635919137293000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCMDPkPD_-PMCFQAAAAAdAAAAABAD

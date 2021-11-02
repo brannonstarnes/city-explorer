@@ -12,7 +12,8 @@ export default class App extends Component {
     this.state = {
     locationName: '',
     lat: '',
-    lon: ''
+    lon: '',
+    mapUrl: ''
   }
 }
 
@@ -22,9 +23,9 @@ handleChange = (e) => {
 };
 
 getMap = async () => {
-  const url = `https://tiles.locationiq.com/v3/hybrid/vector.json?key=${process.env.REACT_APP_LOCATION_KEY}&center=${this.state.lat},${this.state.lon}&zoom=1-18`;
-
-}
+  const mapUrl = `https://tiles.locationiq.com/v3/hybrid/vector.json?key=${process.env.REACT_APP_LOCATION_KEY}&center=${this.state.lat},${this.state.lon}&zoom=1-18`;
+  this.setState({mapUrl: mapUrl})
+};
 
 handleClick = async () => {
   const url = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_KEY}&q=${this.state.locationName}&format=json`;
@@ -34,7 +35,7 @@ handleClick = async () => {
   const lon = response.data[0].lon
   this.setState({lat: lat, lon: lon});
 
-  
+this.getMap();  
 
 }
 
@@ -43,7 +44,7 @@ handleClick = async () => {
     <>
     <CityForm locationName = {this.state.locationName} handleChange = {this.handleChange} handleClick={this.handleClick}/>
     <CityInfo locationName = {this.state.locationName} lat = {this.state.lat} lon={this.state.lon}/>
-    <Map lat = {this.state.lat} lon={this.state.lon} />
+    <Map lat={this.state.lat} lon={this.state.lon} map={this.state.map} />
     </>
     );
   }

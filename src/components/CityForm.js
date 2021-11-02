@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-
+import Container from 'react-bootstrap/Container'
 
 export default class CityForm extends Component {
 
   render() {
     return (
+    <Container>
       <Form>
   <Form.Group className="mb-3" >
     <Form.Label>City Name</Form.Label>
@@ -20,7 +21,7 @@ export default class CityForm extends Component {
   </Button>  
   <h2>{this.props.locationName}</h2>
 </Form>
-
+</Container>
     );
   }
 };

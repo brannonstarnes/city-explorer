@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import Table from 'react-bootstrap/Table';
-
+import Container from 'react-bootstrap/Container'
 
 export default class CityInfo extends Component {
 
   render() {
     return (
+        <Container>
         <Table striped bordered hover variant="dark">
         <thead>
           <tr>
@@ -24,7 +25,7 @@ export default class CityInfo extends Component {
           </tr>
         </tbody>
       </Table>
-
+      </Container>
     );
   }
 };

@@ -9,10 +9,6 @@ export default class CityInfo extends Component {
         <Container>
         <Table striped bordered hover variant="dark">
         <thead>
-          <tr>
-            <th>Your City:</th>
-            <th>{this.props.locationName}</th>
-          </tr>
         </thead>
         <tbody>
           <tr>

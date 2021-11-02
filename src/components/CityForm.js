@@ -11,12 +11,12 @@ export default class CityForm extends Component {
       <Form>
   <Form.Group className="mb-3" >
     <Form.Label>City Name</Form.Label>
-    <Form.Control type="search" placeholder="i.e. Chattanooga" onChange={this.props.handleChange} />
+    <Form.Control type="search" placeholder="i.e. Chattanooga" value={this.props.locationName} onChange={this.props.handleChange} />
     <Form.Text className="text-muted">
       Please enter a city name to explore:
     </Form.Text>
   </Form.Group>
-  <Button variant="primary" onClick={this.props.handleClick}>
+  <Button variant="primary" onClick={this.props.getLocation}>
     Explore!
   </Button>  
   <h2>{this.props.locationName}</h2>

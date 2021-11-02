@@ -1,14 +1,17 @@
 import './App.css';
 import React, { Component } from 'react';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import CityForm from './components/CityForm.js'
+import CityInfo from './components/CityInfo.js'
+import axios from 'axios';
 
 
 export default class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-    locationName: ''
+    locationName: '',
+    lat: '',
+    lon: ''
   }
 }
 
@@ -17,22 +20,21 @@ handleChange = (e) => {
   this.setState({locationName: e.target.value})
 };
 
+handleClick = async () => {
+  const url = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_KEY}&q=${this.state.locationName}&format=json`;
+
+  let response = await axios.get(url);
+  const lat = response.data[0].lat
+  const lon = response.data[0].lon
+  this.setState({lat: lat, lon: lon});
+}
 
   render() {
     return (
-      <Form>
-  <Form.Group className="mb-3" >
-    <Form.Label>City Name</Form.Label>
-    <Form.Control type="search" placeholder="i.e. Chattanooga" onChange={this.handleChange} />
-    <Form.Text className="text-muted">
-      Please enter a city name to explore:
-    </Form.Text>
-  </Form.Group>
-  <Button variant="primary" onClick="handleClick">
-    Explore!
-  </Button>  
-  <h2>{this.state.locationName}</h2>
-</Form>
+    <>
+    <CityForm locationName = {this.state.locationName} handleChange = {this.handleChange} handleClick={this.handleClick}/>
+    <CityInfo locationName = {this.state.locationName} lat = {this.state.lat} lon={this.state.lon}/>
+    </>
     );
   }
 };

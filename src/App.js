@@ -47,8 +47,7 @@ getLocation = async () => {
     return (
     <>
     <CityForm locationName = {this.state.locationName} handleChange = {this.handleChange} getLocation={this.getLocation}/>
-    <CityInfo locationName = {this.state.locationName} lat = {this.state.lat} lon={this.state.lon}/>
-    <Map lat={this.state.lat} lon={this.state.lon} mapUrl={this.state.mapUrl} />
+    <Map locationName={this.state.locationName} lat={this.state.lat} lon={this.state.lon} mapUrl={this.state.mapUrl} />
     {this.state.locationDataAll && this.getMap()}
     </>
     );

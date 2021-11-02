@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Container from 'react-bootstrap/Container'
 import Card from 'react-bootstrap/Card'
 
 export default class Map extends Component {

@@ -10,7 +10,7 @@ export default class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-    locationDataAll: '',
+    locationDataAll: {},
     locationName: '',
     lat: '',
     lon: '',
@@ -38,8 +38,8 @@ getLocation = async () => {
     const locationDataAll = response.data[0];
     const lat = response.data[0].lat;
     const lon = response.data[0].lon;
-    const name = response.data[0].display_name;
-    this.setState({locationDataAll: locationDataAll, lat: lat, lon: lon, locationName: name});
+    // const name = response.data[0].display_name;
+    this.setState({locationDataAll: locationDataAll, lat: lat, lon: lon});
     this.getMap();   
   } catch (e){
     console.error(e);
@@ -51,10 +51,9 @@ getLocation = async () => {
     return (
     <>
     <CityForm locationName = {this.state.locationName} handleChange = {this.handleChange} getLocation={this.getLocation}/>
-    {this.state.mapUrl && <Map locationName={this.state.locationName} lat={this.state.lat} lon={this.state.lon} mapUrl={this.state.mapUrl} />}
-    {this.state.error && <h2>Error: Cannot Geocode</h2>}
-
-    <WeatherInfo />
+    <WeatherInfo lat = {this.state.lat} lon={this.state.lon} locationName={this.state.locationName}/>
+    {this.state.mapUrl && <Map locationDataAll={this.state.locationDataAll} lat={this.state.lat} lon={this.state.lon} mapUrl={this.state.mapUrl} />}
+    {this.state.error && <h2>Error: Cannot Geocode</h2>}  
     </>
     );
   }

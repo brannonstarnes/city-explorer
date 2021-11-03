@@ -14,12 +14,15 @@ export default class WeatherInfo extends Component{
 
 
     getWeatherInfo = async () =>{
-
-        const url = `'http://localhost:3001/weather?lat=${this.props.lat}&${this.props.lon}&${this.props.locationName}'`
-        let response = await axios.get(url)
-        console.log(response.data)
-        // this.setState({weatherInfo: response.data})
-        // this.matchLocation()
+       try{
+        const url = `${process.env.REACT_APP_SERVER_URL}/weather?lat=${this.props.lat}&lon=${this.props.lon}&city=${this.props.locationName}`
+        let response = await axios.get(url);
+        console.log(response.data);
+        console.log(this.props.lat, this.props.lon, this.props.locationName)
+        this.setState({weatherInfo: response.data});  
+       } catch (e){
+        console.error(e);
+       }
     }
 
     // matchLocation = () => {
@@ -36,7 +39,8 @@ export default class WeatherInfo extends Component{
                 <Container>
                 <Button onClick={this.getWeatherInfo}>Get Weather</Button>
                 </Container>
-                {this.state.weatherInfo.length > 0 && this.state.weatherInfo.map(weather => <li key={weather}>{weather}</li>)}
+                {this.state.weatherInfo.length && this.state.weatherInfo.map((dayForecast, idx) => {
+                <li key={idx}>low temp: {dayForecast.min_temp} high temp: {dayForecast.max_temp} description: {dayForecast.description}</li>})}
             </div>
         )
     }

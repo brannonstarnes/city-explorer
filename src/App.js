@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import CityForm from './components/CityForm.js'
 import Map from './components/Map.js'
 import axios from 'axios';
+import WeatherInfo from './components/WeatherInfo.js'
 
 
 export default class App extends Component {
@@ -52,6 +53,8 @@ getLocation = async () => {
     <CityForm locationName = {this.state.locationName} handleChange = {this.handleChange} getLocation={this.getLocation}/>
     {this.state.mapUrl && <Map locationName={this.state.locationName} lat={this.state.lat} lon={this.state.lon} mapUrl={this.state.mapUrl} />}
     {this.state.error && <h2>Error: Cannot Geocode</h2>}
+
+    <WeatherInfo />
     </>
     );
   }

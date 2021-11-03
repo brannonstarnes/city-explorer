@@ -38,8 +38,8 @@ getLocation = async () => {
     const locationDataAll = response.data[0];
     const lat = response.data[0].lat;
     const lon = response.data[0].lon;
-    // const name = response.data[0].display_name;
-    this.setState({locationDataAll: locationDataAll, lat: lat, lon: lon});
+    const name = response.data[0].display_name;
+    this.setState({locationDataAll: locationDataAll, lat: lat, lon: lon, locationName: name});
     this.getMap();   
   } catch (e){
     console.error(e);

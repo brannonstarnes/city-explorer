@@ -15,7 +15,7 @@ export default class WeatherInfo extends Component{
 
     getWeatherInfo = async () =>{
        try{
-        const url = `${process.env.REACT_APP_SERVER_URL}/weather?lat=${this.props.lat}&lon=${this.props.lon}&city=${this.props.locationName.split(',')[0]}`
+        const url = `${process.env.REACT_APP_SERVER_URL}/weather?searchQuery=${this.props.locationName.split(',')[0]}&lat=${this.props.lat}&lon=${this.props.lon}}`
         let response = await axios.get(url);
         console.log(response.data);
         console.log(this.props.lat, this.props.lon, this.props.locationName)

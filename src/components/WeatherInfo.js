@@ -8,27 +8,19 @@ export default class WeatherInfo extends Component{
     constructor(props){
         super(props);
         this.state = {
-            weatherInfo: []
+            weatherForecast: []
         }
     }
 
 
-    getWeatherInfo = async () =>{
-       try{
-        const url = `${process.env.REACT_APP_SERVER_URL}/weather?searchQuery=${this.props.locationName.split(',')[0]}&lat=${this.props.lat}&lon=${this.props.lon}}`
+    getWeatherInfo = async () => {
+       
+        const url = `${process.env.REACT_APP_SERVER_URL}/weather?lat=${this.props.lat}&lon=${this.props.lon}`;
+        
         let response = await axios.get(url);
-        console.log(response.data);
-        console.log(this.props.lat, this.props.lon, this.props.locationName)
-        this.setState({weatherInfo: response.data});  
-       } catch (e){
-        console.error(e);
-       }
-    }
-
-    // matchLocation = () => {
-    // //take lat and lon from this.props.lat/lon and try to match to the the reponse.data using .find()
-    // this.state.weatherInfo.find(lat => lat >= Math.floor(lat))
-    // }
+        this.setState({weatherForecast: response.data});
+        console.log(response.data);  
+       };    
 
     //the data that comes back will be put in state..if i have the state, will map it and render li's
     //to render will check if you have the weather info or not, if yes, then render
@@ -39,9 +31,10 @@ export default class WeatherInfo extends Component{
                 <Container>
                 <Button onClick={this.getWeatherInfo}>Get Weather</Button>
                 </Container>
-                {this.state.weatherInfo.length && this.state.weatherInfo.map((dayForecast, idx) => 
-                <li key={idx}>Date: {dayForecast.datetime} Low Temp: {dayForecast.min_temp} High Temp: {dayForecast.max_temp} : {dayForecast.description}</li>)}
+                {this.state.weatherForecast.length && this.state.weatherForecast.map((dayForecast, idx) => 
+                <li key={idx}>Date: {dayForecast.datetime} Low Temp: {dayForecast.min_temp} High Temp: {dayForecast.max_temp} Conditions: {dayForecast.description}</li>)}
+    
             </div>
         )
-    }
+    };
 }

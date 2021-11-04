@@ -12,19 +12,16 @@ export default class WeatherInfo extends Component{
         }
     }
 
-
     getWeatherInfo = async () => {
        
-        const url = `${process.env.REACT_APP_SERVER_URL}/weather?lat=${this.props.lat}&lon=${this.props.lon}`;
+        const url = `${process.env.REACT_APP_SERVER_URL}/weather?lat=${this.props.lat}&lon=${this.props.lon}&city_name${this.props.locationName.split(',')[0]}`;
         
         let response = await axios.get(url);
         this.setState({weatherForecast: response.data});
         console.log(response.data);  
        };    
 
-    //the data that comes back will be put in state..if i have the state, will map it and render li's
-    //to render will check if you have the weather info or not, if yes, then render
-    
+   
     render(){
         return(
             <div>

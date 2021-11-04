@@ -35,12 +35,10 @@ Finish time: 4:00
 
 Actual time needed to complete: 30min
 
-
 ### Data Flow Charts
 
 #### Basic Client Server Relationship
 ![image](https://user-images.githubusercontent.com/79380625/139947652-341beea0-5645-432b-ab62-2d01e903e309.png)
 
-### City Explorer WRRC Flow
+#### City Explorer WRRC Flow
 ![image](https://user-images.githubusercontent.com/79380625/139947575-a3907d9c-ebd7-4c19-9649-909e6b2359fd.png)
-

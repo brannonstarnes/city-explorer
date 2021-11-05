@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
+import Carousel from 'bootstrap';
 
 export default class MovieInfo extends Component{
     
@@ -29,11 +30,20 @@ export default class MovieInfo extends Component{
         return(
             <div>
                 <Container>
-                <Button onClick={this.getMovieInfo}>Get Movies</Button>
+                    <Button onClick={this.getMovieInfo}>Get Movies</Button>
                 </Container>
-                {this.state.movies && this.state.movies.map((movie, idx) => 
-                <li key={idx}>Date: {movie.datetime} Low Temp: {movie.min_temp} High Temp: {movie.max_temp} Conditions: {movie.description}</li>)}
-    
+                <Carousel>
+                    {this.state.movies && this.state.movies.map((movie) => 
+                        <Carousel.Item>
+                            <img alt='carousel item' src={`https://image.tmdb.org/t/p/w200${movie.posterPath}`}/> 
+                        <Carousel.Caption>
+                            <h3>{movie.title}</h3>
+                            <p>{movie.overview}</p>
+                            <h5> Avg Rating: {movie.votes} Votes:{movie.voteCount}</h5>
+                        </Carousel.Caption> 
+                        </Carousel.Item>   
+                        )}
+                </Carousel>
             </div>
         )
     };

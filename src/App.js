@@ -2,7 +2,6 @@ import './App.css';
 import React, { Component } from 'react';
 import Header from './components/Header.js';
 import Main from './components/Main.js'
-import Map from './components/Map.js';
 import axios from 'axios';
 import ErrorMessage from './components/ErrorMessage.js';
 
@@ -58,9 +57,7 @@ getLocation = async () => {
     return (
     <>
     <Header />
-    <Main lat = {this.state.lat} lon={this.state.lon} locationName={this.state.locationName} handleChange={this.handleChange} getLocation = {this.getLocation}/>
-
-    {this.state.mapUrl && <Map locationDataAll={this.state.locationDataAll} lat={this.state.lat} lon={this.state.lon} mapUrl={this.state.mapUrl} />}
+    <Main mapUrl= {this.state.mapUrl} lat = {this.state.lat} lon={this.state.lon} locationName={this.state.locationName} handleChange={this.handleChange} getLocation = {this.getLocation}/>
     {this.state.error && <ErrorMessage error= {this.state.error} errorMsg={this.state.errorMsg}/>}  
     </>
     );

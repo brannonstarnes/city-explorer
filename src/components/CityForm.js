@@ -10,7 +10,7 @@ export default class CityForm extends Component {
     <Container>
       <Form>
   <Form.Group className="mb-3" >
-    <Form.Label>City Name</Form.Label>
+    <Form.Label></Form.Label>
     <Form.Control type="search" placeholder="i.e. Chattanooga" value={this.props.locationName} onChange={this.props.handleChange} />
     <Form.Text className="text-muted">
       Please enter a city name to explore:
@@ -18,7 +18,7 @@ export default class CityForm extends Component {
   </Form.Group>
   <Button variant="primary" onClick={this.props.getLocation}>
     Explore!
-  </Button>  
+  </Button> 
 </Form>
 </Container>
     );

@@ -3,7 +3,7 @@ import axios from 'axios'
 import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 
-export default class WeatherInfo extends Component{
+export default class MovieInfo extends Component{
     
     constructor(props){
         super(props);
@@ -18,7 +18,7 @@ export default class WeatherInfo extends Component{
         const url = `${process.env.REACT_APP_SERVER_URL}/movies?city_name=${this.props.city_name.split(',')[0]}`;
         
         let result = await axios.get(url);
-        this.setState({weatherForecast: result.data});
+        this.setState({movies: result.data});
         console.log(result.data);  
     };    
 
@@ -31,7 +31,7 @@ export default class WeatherInfo extends Component{
                 <Container>
                 <Button onClick={this.getMovieInfo}>Get Movies</Button>
                 </Container>
-                {this.state.movies.length && this.state.movies.map((movie, idx) => 
+                {this.state.movies && this.state.movies.map((movie, idx) => 
                 <li key={idx}>Date: {movie.datetime} Low Temp: {movie.min_temp} High Temp: {movie.max_temp} Conditions: {movie.description}</li>)}
     
             </div>

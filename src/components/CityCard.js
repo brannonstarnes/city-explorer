@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card'
 import CityInfo from './CityInfo';
 import Container from 'react-bootstrap/Container'
 
+
 export default class Map extends Component {
 
   render() {

@@ -3,7 +3,7 @@ import axios from 'axios'
 import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 
-export default class WeatherInfo extends Component{
+export default class MovieInfo extends Component{
     
     constructor(props){
         super(props);
@@ -17,10 +17,10 @@ export default class WeatherInfo extends Component{
        
         const url = `${process.env.REACT_APP_SERVER_URL}/movies?city_name=${this.props.city_name.split(',')[0]}`;
         
-        let response = await axios.get(url);
-        this.setState({weatherForecast: response.data});
-        console.log(response.data);  
-       };    
+        let result = await axios.get(url);
+        this.setState({movies: result.data});
+        console.log(result.data);  
+    };    
 
     //the data that comes back will be put in state..if i have the state, will map it and render li's
     //to render will check if you have the weather info or not, if yes, then render
@@ -31,7 +31,7 @@ export default class WeatherInfo extends Component{
                 <Container>
                 <Button onClick={this.getMovieInfo}>Get Movies</Button>
                 </Container>
-                {this.state.movies.length && this.state.movies.map((movie, idx) => 
+                {this.state.movies && this.state.movies.map((movie, idx) => 
                 <li key={idx}>Date: {movie.datetime} Low Temp: {movie.min_temp} High Temp: {movie.max_temp} Conditions: {movie.description}</li>)}
     
             </div>

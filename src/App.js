@@ -1,10 +1,9 @@
 import './App.css';
 import React, { Component } from 'react';
-import CityForm from './components/CityForm.js'
-import Map from './components/Map.js'
+import Header from './components/Header.js';
+import Main from './components/Main.js'
 import axios from 'axios';
-import WeatherInfo from './components/WeatherInfo.js'
-import MovieInfo from './components/MovieInfo.js';
+import ErrorMessage from './components/ErrorMessage.js';
 
 
 export default class App extends Component {
@@ -16,19 +15,25 @@ export default class App extends Component {
     lat: '',
     lon: '',
     mapUrl: '',
-    error: false
+    error: false,
+    errorMsg: 'Default Error Message'
   }
 }
 
-//when event occurs in input field, update state to match the value of the input field
 handleChange = (e) => {
   this.setState({locationName: e.target.value})
 };
 
 getMap = async () => {
   const mapUrl = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_KEY}&center=${this.state.lat},${this.state.lon}&zoom=12`;
+  try{
   this.setState({...this.state.locationDataAll, mapUrl: mapUrl})
   console.log(mapUrl)
+  } catch (e){
+    console.error(e)
+    this.setState({errorMsg: e});
+    this.setState({error: 'true'});
+  }
 };
 
 getLocation = async () => {
@@ -43,7 +48,7 @@ getLocation = async () => {
     this.setState({locationDataAll: locationDataAll, lat: lat, lon: lon, locationName: name});
     this.getMap();   
   } catch (e){
-    console.error(e);
+    this.setState({errorMsg: e});
     this.setState({error: true})
   } 
 };
@@ -51,11 +56,9 @@ getLocation = async () => {
   render() {
     return (
     <>
-    <CityForm locationName = {this.state.locationName} handleChange = {this.handleChange} getLocation={this.getLocation}/>
-    <WeatherInfo lat = {this.state.lat} lon={this.state.lon} locationName={this.state.locationName}/>
-    <MovieInfo city_name = {this.state.locationName} />
-    {this.state.mapUrl && <Map locationDataAll={this.state.locationDataAll} lat={this.state.lat} lon={this.state.lon} mapUrl={this.state.mapUrl} />}
-    {this.state.error && <h2>Error: Cannot Geocode</h2>}  
+    <Header />
+    <Main mapUrl= {this.state.mapUrl} lat = {this.state.lat} lon={this.state.lon} locationName={this.state.locationName} handleChange={this.handleChange} getLocation = {this.getLocation}/>
+    {this.state.error && <ErrorMessage error= {this.state.error} errorMsg={this.state.errorMsg}/>}  
     </>
     );
   }

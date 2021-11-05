@@ -32,7 +32,7 @@ export default class WeatherInfo extends Component{
                         <Card.Title>3 Day Forecast for {this.props.locationName}.</Card.Title>
                             <Card.Text>
                               {this.state.weatherForecast && this.state.weatherForecast.map((dayForecast, idx) => 
-                              <li key={idx}>Date: {dayForecast.datetime} Low Temp: {dayForecast.min_temp} High Temp: {dayForecast.max_temp} Conditions: {dayForecast.description} <image src={dayForecast.icon}</li>)}
+                              <li key={idx}>Date: {dayForecast.datetime} Low Temp: {dayForecast.min_temp} High Temp: {dayForecast.max_temp} Conditions: {dayForecast.description}</li>)}
                             </Card.Text>
                             <Button onClick={this.getWeatherInfo}>Get Weather</Button>
                         </Card.Body>

@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
-import Carousel from 'bootstrap';
+import Carousel from 'react-bootstrap/Carousel';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 
 export default class MovieInfo extends Component{
     
@@ -32,18 +35,22 @@ export default class MovieInfo extends Component{
                 <Container>
                     <Button onClick={this.getMovieInfo}>Get Movies</Button>
                 </Container>
-                <Carousel>
+                <Col md={4} style={{margin: 'auto'}}>
+                <Carousel indicators={false}>
                     {this.state.movies && this.state.movies.map((movie) => 
                         <Carousel.Item>
-                            <img alt='carousel item' src={`https://image.tmdb.org/t/p/w200${movie.posterPath}`}/> 
-                        <Carousel.Caption>
-                            <h3>{movie.title}</h3>
-                            <p>{movie.overview}</p>
-                            <h5> Avg Rating: {movie.votes} Votes:{movie.voteCount}</h5>
-                        </Carousel.Caption> 
+                            <img style= {{margin: 'auto'}} alt='carousel item' src={`https://image.tmdb.org/t/p/w400${movie.posterPath}`}/> 
+                        {/* <Carousel.Caption> */}
+                        <div style={{overflow: 'scroll', height: '100px'}}>
+                            <h3 style={{color: 'black'}}>{movie.title}</h3>
+                            <p style={{color: 'black'}}>{movie.overview}</p>
+                            <h5 style={{color: 'black'}}> Avg Rating: {movie.votes} Votes:{movie.voteCount}</h5>
+                        </div>
+                        {/* </Carousel.Caption>  */}
                         </Carousel.Item>   
                         )}
                 </Carousel>
+                </Col>
             </div>
         )
     };

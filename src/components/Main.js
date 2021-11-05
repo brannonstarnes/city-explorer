@@ -13,20 +13,20 @@ export default class Main extends Component{
            <>
            <Container>
            <Row>
-                <Container>
+                {/* <Container> */}
                     <CityForm locationName = {this.props.locationName} handleChange = {this.props.handleChange} getLocation={this.props.getLocation}/>
-                </Container>
+                {/* </Container> */}
             </Row>
             <Row>    
-              <Col>
-                <Container>
+              <Col md={3} lg={6}>
+                {/* <Container> */}
                     {this.props.mapUrl && <CityCard locationDataAll={this.props.locationDataAll} lat={this.props.lat} lon={this.props.lon} mapUrl={this.props.mapUrl} />}
-                </Container>
+                {/* </Container> */}
               </Col>
-              <Col>
-                <Container>
+              <Col md={3} lg={6}>
+                {/* <Container> */}
                     <WeatherInfo lat = {this.props.lat} lon={this.props.lon} locationName={this.props.locationName}/>
-                </Container>
+                {/* </Container> */}
               </Col>
             </Row>  
             <Row> 

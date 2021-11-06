@@ -3,6 +3,7 @@ import axios from 'axios'
 import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 import Card from 'react-bootstrap/Card';
+import WeatherDay from './WeatherDay.js';
 
 export default class WeatherInfo extends Component{
     
@@ -31,6 +32,7 @@ export default class WeatherInfo extends Component{
                         <Card.Body>
                         <Card.Title>3 Day Forecast for {this.props.locationName}.</Card.Title>
                             <Card.Text>
+                                <WeatherDay weatherForecast={this.state.weatherForecast}/>
                               {this.state.weatherForecast && this.state.weatherForecast.map((dayForecast, idx) => 
                               <li key={idx}>Date: {dayForecast.datetime} Low Temp: {dayForecast.min_temp} High Temp: {dayForecast.max_temp} Conditions: {dayForecast.description}</li>)}
                             </Card.Text>

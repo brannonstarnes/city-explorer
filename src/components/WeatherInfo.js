@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import Button from 'react-bootstrap/Button'
-import Container from 'react-bootstrap/Container'
 import Card from 'react-bootstrap/Card';
 import WeatherDay from './WeatherDay.js';
 
@@ -15,7 +14,7 @@ export default class WeatherInfo extends Component{
     }
 
     getWeatherInfo = async () => {
-        const url = `${process.env.REACT_APP_SERVER_URL}/weather?lat=${this.props.lat}&lon=${this.props.lon}&city_name${this.props.locationName.split(',')[0]}`;
+        const url = `${process.env.REACT_APP_SERVER_URL}/weather?lat=${this.props.lat}&lon=${this.props.lon}&city_name=${this.props.locationName.split(',')[0]}`;
         
         let response = await axios.get(url);
         this.setState({weatherForecast: response.data});
@@ -24,24 +23,21 @@ export default class WeatherInfo extends Component{
 
 
     render(){
+       
         return(
             <div>
-                <Container>
-                    <Card style={{ width: '18rem' }}>
-                        <Card.Img variant="top" src="holder.js/100px180" />
+              
+                    <Card style={{ width: '40rem', height: '34rem', margin:'auto' }}>
+                        <Card.Img variant="top" src="https://www.weather.gov/images/riw/Banner_Forecast.png" />
                         <Card.Body>
                         <Card.Title>3 Day Forecast for {this.props.locationName}.</Card.Title>
-                            <Card.Text>
-                                <WeatherDay weatherForecast={this.state.weatherForecast}/>
-                              {this.state.weatherForecast && this.state.weatherForecast.map((dayForecast, idx) => 
-                              <li key={idx}>Date: {dayForecast.datetime} Low Temp: {dayForecast.min_temp} High Temp: {dayForecast.max_temp} Conditions: {dayForecast.description}</li>)}
+                            <Card.Text style={{height: '70'}}>
+                              <WeatherDay weatherForecast={this.state.weatherForecast}/>
                             </Card.Text>
                             <Button onClick={this.getWeatherInfo}>Get Weather</Button>
                         </Card.Body>
                     </Card>
-                    
-                </Container>
-                
+
     
             </div>
         )

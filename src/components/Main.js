@@ -18,14 +18,14 @@ export default class Main extends Component{
                 {/* </Container> */}
             </Row>
             <Row>    
-              <Col md={3} lg={6}>
+              <Col md={3} lg={5}>
                 {/* <Container> */}
                     {this.props.mapUrl && <CityCard locationDataAll={this.props.locationDataAll} lat={this.props.lat} lon={this.props.lon} mapUrl={this.props.mapUrl} />}
                 {/* </Container> */}
               </Col>
-              <Col md={3} lg={6}>
+              <Col md={3} lg={5}>
                 {/* <Container> */}
-                    <WeatherInfo lat = {this.props.lat} lon={this.props.lon} locationName={this.props.locationName}/>
+                    <WeatherInfo lat = {this.props.lat} lon={this.props.lon} locationName={this.props.locationName} />
                 {/* </Container> */}
               </Col>
             </Row>  

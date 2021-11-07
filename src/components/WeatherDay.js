@@ -1,30 +1,37 @@
 import React, { Component } from 'react';
-import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 export default class WeatherDay extends Component{
     
-    // this.props.weatherForecast.map(dailyWeather => new DayForecast(dailyWeather));
     
-    // class DayForecast {
-    //     constructor(obj){
-    //       this.datetime = obj.datetime;
-    //       this.min_temp = obj.min_temp;
-    //       this.max_temp = obj.max_temp;
-    //       this.description = obj.weather.description;
-    //       this.icon = obj.weather.icon;
-    //     } 
-    //   }
-
     render() {
+
         return(
-            <>
-            <Container>
-                <Card>
-                    <p>Test</p>
-                </Card>
-            </Container>
-            </>
+            <div>
+              {/* <Container>   */}
+                <Row>       
+                 {this.props.weatherForecast && this.props.weatherForecast.map((dayForecast) => 
+                 <Col>
+                    <Card style={{ width: '11rem', margin:'auto' }}>
+                        <Card.Img variant="top" src={` https://www.weatherbit.io/static/img/icons/${dayForecast.icon}.png`} />
+                        <Card.Body>
+                            <Card.Title>{dayForecast.datetime}</Card.Title>
+                              <Card.Text>
+                                  <ul>
+                                    <li>Low: {dayForecast.min_temp}</li>
+                                    <li>High: {dayForecast.max_temp}</li>
+                                    <li>Conditions: {dayForecast.description}</li>
+                                  </ul>
+                              </Card.Text>
+                        </Card.Body>
+                    </Card>
+                 </Col>
+                 )}
+              </Row>
+            {/* </Container> */}
+            </div>
         )
-    };
+    }
 }

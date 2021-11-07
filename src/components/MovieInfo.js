@@ -3,7 +3,7 @@ import axios from 'axios'
 import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 import Carousel from 'react-bootstrap/Carousel';
-import Row from 'react-bootstrap/Row';
+// import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 
@@ -30,6 +30,9 @@ export default class MovieInfo extends Component{
     //to render will check if you have the weather info or not, if yes, then render
     
     render(){
+        // if(this.state.movies){
+        //     this.getMovieInfo()
+        // }
         return(
             <div>
                 <Container>

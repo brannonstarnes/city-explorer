@@ -46,5 +46,10 @@ Actual time needed to complete: 30min
 #### City Explorer WRRC Flow Updated
 ![Lab 09 Web Cycle](https://user-images.githubusercontent.com/79380625/140422724-937ef472-f29b-4089-9a15-04317f14caef.png)
 
+#### Cache Flow Drawing 
+
+![cache](https://user-images.githubusercontent.com/79380625/140662212-36c307b9-cb62-4a15-ae0d-8883664c080c.png)
+
+
 
 
